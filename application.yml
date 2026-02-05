@@ -1,0 +1,4 @@
+proxy:
+  specs:
+    - id: euler
+      container-image: max-over/nvm
