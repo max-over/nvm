@@ -1,6 +1,6 @@
 FROM openanalytics/r-ver:4.3.3
 
-LABEL maintainer="max=over"
+LABEL maintainer="max-over"
 
 RUN /rocker_scripts/setup_R.sh https://packagemanager.posit.co/cran/__linux__/jammy/latest
 RUN echo "\noptions(shiny.port=3838, shiny.host='0.0.0.0')" >> /usr/local/lib/R/etc/Rprofile.site
@@ -24,8 +24,13 @@ RUN R -q -e "options(warn=2); install.packages(c('shiny'))"
 # install dependencies of the euler app
 RUN R -q -e "options(warn=2); install.packages('Rmpfr')"
 
+# install dependencies of the euler app
+RUN R -q -e "options(warn=2); install.packages('bslib')"
+
+RUN R -q -e "options(warn=2); install.packages('dplyr')"
+
 # install R code
-COPY euler /app
+COPY nvm /app
 WORKDIR /app
 
 EXPOSE 3838
