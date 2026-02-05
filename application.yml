@@ -1,0 +1,22 @@
+proxy:
+  title: Shiny Proxy
+  landing-page: /
+  heartbeat-rate: 10000
+  heartbeat-timeout: 60000
+  port: 8080
+  authentication: simple
+  admin-groups: scientists
+  container-wait-time: 999000
+  # Example: 'simple' authentication configuration
+  users:
+  - name: user
+    password: user
+    groups: scientists
+  specs:
+    - id: nvm
+      display-name: NVM
+      description: Newsvendor model
+      container-image: max-over/nvm
+logging:
+  file:
+    name: shinyproxy.log
